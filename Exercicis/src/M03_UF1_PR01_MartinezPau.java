@@ -7,6 +7,7 @@ public class M03_UF1_PR01_MartinezPau {
         Scanner llegir = new Scanner(System.in);
 
         // Colors
+        // Foregrounds
          final String RESET  = "\u001B[0m";
          final String BLACK  = "\u001B[30m";
          final String RED    = "\u001B[31m";
@@ -16,7 +17,6 @@ public class M03_UF1_PR01_MartinezPau {
          final String PURPLE = "\u001B[35m";
          final String CYAN   = "\u001B[36m";
          final String WHITE  = "\u001B[37m";
-
          final String BR_BLACK  = "\u001B[90m";
          final String BR_RED    = "\u001B[91m";
          final String BR_GREEN  = "\u001B[92m";
@@ -25,7 +25,14 @@ public class M03_UF1_PR01_MartinezPau {
          final String BR_PURPLE = "\u001B[95m";
          final String BR_CYAN   = "\u001B[96m";
          final String BR_WHITE  = "\u001B[97m";
-
+        final String[] FOREGROUNDS = {
+                BLACK, RED, GREEN, YELLOW,
+                BLUE, PURPLE, CYAN, WHITE,
+                BR_BLACK, BR_RED, BR_GREEN, BR_YELLOW,
+                BR_BLUE, BR_PURPLE, BR_CYAN, BR_WHITE
+        }; // Hi ha 16 colors diferents
+         
+         
          final String BG_BLACK  = "\u001B[40m";
          final String BG_RED    = "\u001B[41m";
          final String BG_GREEN  = "\u001B[42m";
@@ -68,17 +75,18 @@ public class M03_UF1_PR01_MartinezPau {
                 // Menu principal
                 System.out.print("\r");
                 System.out.print(
-                        BR_BG_GREEN+"BENVINGUTS AL MENU:                    \t" + RESET+ "\n"+
+                        BR_BG_BLACK+"BENVINGUTS AL MENU:                        \t" + RESET+ "\n"+
 
-                        BR_BG_GREEN+"=====================================  \t" + RESET+ "\n"+
-                        BR_BG_GREEN+"1. Cara o creu ( Ara amb animacio!!)   \t" + RESET+ "\n"+
-                        BR_BG_GREEN+"2. Pedra, Paper i tisora (✊ ✋ ✌)   \t" + RESET+ "\n"+
-                        BR_BG_GREEN+"3. Generador de colors                 \t" + RESET+ "\n"+
-                        BR_BG_GREEN+"4. Generador de noms                   \t" + RESET+ "\n"+
-                        BR_BG_GREEN+"5. (EXTRA) TerminalQuest               \t" + RESET+ "\n"+
-                        BR_BG_GREEN+"6. Sortir de la aplicació              \t" + RESET+ "\n"+
-                        BR_BG_GREEN+ "===================================== \t" + RESET+ "\n"+
-                        BR_BG_GREEN+ "Seleciona una opció:                  \t" + RESET);
+                        BR_BG_BLACK+GREEN+"#======================================#\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 1. Cara o creu ("+YELLOW+ "Ara amb animacio!!"+RESET+BR_BG_BLACK+GREEN+")  |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 2. Pedra, Paper i tisora (✊ ✋ ✌ )  |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 3. Generador de colors               |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 4. Generador de noms                 |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 5. (EXTRA) TerminalQuest             |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 6. Sortir de la aplicació            |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"#======================================#\t" + RESET+ "\n");
+
+                System.out.print("Seleciona una opció: ");
 
             do { // Excluim el menu perque no es repetexi cada vegada que fallem
                 System.out.print("\r");
@@ -108,7 +116,7 @@ public class M03_UF1_PR01_MartinezPau {
                 // ===== JOC MONEDA ===== //
                 case 1:{
                     // Variables per Joc Monedes
-                    String [] moneda = {"Cara ☻", "Creu ♱"}; // Per poder Ilustrar el resultat
+                    String [] moneda = {YELLOW+"Cara ☻"+RESET, YELLOW+"Creu ♱"+RESET}; // Per poder Ilustrar el resultat
                     String selecioUser = ""; // Selecio atraves poder
                     char[] animMoneda = {'⭗', '⭖', '⚊', '⭖'}; // Per fer la animacio de la moneda
                     char[] animVictoria = {'E','N','H','O','R','A','B','O','N','A'}; // Enhorabona!!
@@ -120,8 +128,8 @@ public class M03_UF1_PR01_MartinezPau {
                         // SubMenu Cara-Creu
                         System.out.print("\r");
                         System.out.print("Benvingut al joc de la moneda: \n" +
-                                "Introdueix \"Cara\" per " + moneda[0] + "\n" +
-                                "Introdueix \"Creu\" per " + moneda[1] + "\n");
+                                "Introdueix \""+RED+"Cara"+RESET+"\" per " + moneda[0] + "\n" +
+                                "Introdueix \""+RED+"Creu"+RESET+"\" per " + moneda[1] + "\n");
 
                         do { // Verificar si no es cara o creu
                             System.out.print("\r");
@@ -150,14 +158,19 @@ public class M03_UF1_PR01_MartinezPau {
                                 System.out.print("\r");
                             }
                         }
-                        indexMoneda = (int) (Math.random() * 2);
-                        System.out.println("Ha tocat: " + moneda[indexMoneda]);
-                        Thread.sleep(1000);
+
+                        for (int i = 0; i < 1; i++) {
+                            indexMoneda = (int) (Math.random() * 2);
+                            System.out.println("Ha tocat: " + moneda[indexMoneda]);
+                            Thread.sleep(1000);
+                        }
+
+
 
                         if (selecioUser.equals("Cara")) {
                             if (indexMoneda == 0) { // Guaña
                                 for (int i = 0; i < animVictoria.length; i++) { // Animacio de Victoria
-                                    System.out.print(animVictoria[i]);
+                                    System.out.print(FOREGROUNDS[(int)(Math.random()*16)]+animVictoria[i]+RESET);
                                     Thread.sleep(200);
                                 }
                                 System.out.println("");
@@ -170,10 +183,10 @@ public class M03_UF1_PR01_MartinezPau {
                         } else if (selecioUser.equals("Creu")) {
                             if (indexMoneda == 1) { // Guaña
                                 for (int i = 0; i < animVictoria.length; i++) {
-                                    System.out.print(animVictoria[i]);
+                                    System.out.print(FOREGROUNDS[(int)(Math.random()*16)]+animVictoria[i]+RESET);
                                     Thread.sleep(200);
                                 }
-                                System.out.println("");
+                                System.out.println(RESET);
                                 System.out.println("Has guanyat!!");
 
                             } else { // Perd
