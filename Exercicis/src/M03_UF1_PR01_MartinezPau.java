@@ -31,8 +31,7 @@ public class M03_UF1_PR01_MartinezPau {
                 BR_BLACK, BR_RED, BR_GREEN, BR_YELLOW,
                 BR_BLUE, BR_PURPLE, BR_CYAN, BR_WHITE
         }; // Hi ha 16 colors diferents
-         
-         
+
          final String BG_BLACK  = "\u001B[40m";
          final String BG_RED    = "\u001B[41m";
          final String BG_GREEN  = "\u001B[42m";
@@ -41,7 +40,6 @@ public class M03_UF1_PR01_MartinezPau {
          final String BG_PURPLE = "\u001B[45m";
          final String BG_CYAN   = "\u001B[46m";
          final String BG_WHITE  = "\u001B[47m";
-
          final String BR_BG_BLACK  = "\u001B[100m";
          final String BR_BG_RED    = "\u001B[101m";
          final String BR_BG_GREEN  = "\u001B[102m";
@@ -51,18 +49,20 @@ public class M03_UF1_PR01_MartinezPau {
          final String BR_BG_CYAN   = "\u001B[106m";
          final String BR_BG_WHITE  = "\u001B[107m";
 
+        final String[] BACKGROUNDS = {
+                BG_BLACK, BG_RED, BG_GREEN, BG_YELLOW,
+                BG_BLUE, BG_PURPLE, BG_CYAN, BG_WHITE,
+                BR_BG_BLACK, BR_BG_RED, BR_BG_GREEN, BR_BG_YELLOW,
+                BR_BG_BLUE, BR_BG_PURPLE, BR_BG_CYAN, BR_BG_WHITE};
+
         // Arrays
 
         String[] nom;
         String[] cognom;
 
-        // Int
+        // Opcion
         int opcio = 0;
-        int numDauMax = 0;
-        int dau = 0;
-        int r = 255;
-        int g = 255;
-        int b = 255;
+        String opcioString = ""; // Opcio pero en String
 
         // Boolenas
         boolean tipusCorrecte;
@@ -72,15 +72,15 @@ public class M03_UF1_PR01_MartinezPau {
         // El Codi comença
         do {
 
-                // Menu principal
+                // Menu principal // 1:v 2:X 3:R
                 System.out.print("\r");
                 System.out.print(
                         BR_BG_BLACK+"BENVINGUTS AL MENU:                        \t" + RESET+ "\n"+
 
                         BR_BG_BLACK+GREEN+"#======================================#\t" + RESET+ "\n"+
                         BR_BG_BLACK+GREEN+"| 1. Cara o creu ("+YELLOW+ "Ara amb animacio!!"+RESET+BR_BG_BLACK+GREEN+")  |\t" + RESET+ "\n"+
-                        BR_BG_BLACK+GREEN+"| 2. Pedra, Paper i tisora (✊ ✋ ✌ )  |\t" + RESET+ "\n"+
-                        BR_BG_BLACK+GREEN+"| 3. Generador de colors               |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 2. Pedra, Paper i tisora (✊ ✋ ✌) |\t" + RESET+ "\n"+
+                        BR_BG_BLACK+GREEN+"| 3. Generador d'art                   |\t" + RESET+ "\n"+
                         BR_BG_BLACK+GREEN+"| 4. Generador de noms                 |\t" + RESET+ "\n"+
                         BR_BG_BLACK+GREEN+"| 5. (EXTRA) TerminalQuest             |\t" + RESET+ "\n"+
                         BR_BG_BLACK+GREEN+"| 6. Sortir de la aplicació            |\t" + RESET+ "\n"+
@@ -117,7 +117,6 @@ public class M03_UF1_PR01_MartinezPau {
                 case 1:{
                     // Variables per Joc Monedes
                     String [] moneda = {YELLOW+"Cara ☻"+RESET, YELLOW+"Creu ♱"+RESET}; // Per poder Ilustrar el resultat
-                    String selecioUser = ""; // Selecio atraves poder
                     char[] animMoneda = {'⭗', '⭖', '⚊', '⭖'}; // Per fer la animacio de la moneda
                     char[] animVictoria = {'E','N','H','O','R','A','B','O','N','A'}; // Enhorabona!!
                     int indexMoneda = 0; // Se utilitzara per saber si has guanyat i per el Math.random
@@ -133,12 +132,12 @@ public class M03_UF1_PR01_MartinezPau {
 
                         do { // Verificar si no es cara o creu
                             System.out.print("\r");
-                            selecioUser = llegir.next(); // For Int
+                            opcioString = llegir.next(); // For Int
 
 
-                            if (selecioUser.equals("Cara")) {
+                            if (opcioString.equals("Cara")) {
                                 break;
-                            } else if (selecioUser.equals("Creu")) {
+                            } else if (opcioString.equals("Creu")) {
                                 break;
                             } else {
                                 tipusCorrecte = false;
@@ -159,7 +158,7 @@ public class M03_UF1_PR01_MartinezPau {
                             }
                         }
 
-                        for (int i = 0; i < 1; i++) {
+                        for (int i = 0; i < 1; i++) {// Si ho faix fora del for sempre aconsegeixo el mateix resultat
                             indexMoneda = (int) (Math.random() * 2);
                             System.out.println("Ha tocat: " + moneda[indexMoneda]);
                             Thread.sleep(1000);
@@ -167,7 +166,7 @@ public class M03_UF1_PR01_MartinezPau {
 
 
 
-                        if (selecioUser.equals("Cara")) {
+                        if (opcioString.equals("Cara")) {// Si es cara...
                             if (indexMoneda == 0) { // Guaña
                                 for (int i = 0; i < animVictoria.length; i++) { // Animacio de Victoria
                                     System.out.print(FOREGROUNDS[(int)(Math.random()*16)]+animVictoria[i]+RESET);
@@ -180,7 +179,7 @@ public class M03_UF1_PR01_MartinezPau {
                                 System.out.println("Has perdut..");
                             }
 
-                        } else if (selecioUser.equals("Creu")) {
+                        } else if (opcioString.equals("Creu")) {// Si es creu
                             if (indexMoneda == 1) { // Guaña
                                 for (int i = 0; i < animVictoria.length; i++) {
                                     System.out.print(FOREGROUNDS[(int)(Math.random()*16)]+animVictoria[i]+RESET);
@@ -196,6 +195,7 @@ public class M03_UF1_PR01_MartinezPau {
                         }
                         Thread.sleep(1000);
 
+                        // Final del joc de la moneda
 
                         System.out.print("Que vols fer?: \n" +
                                 "=====================================\n" +
@@ -282,20 +282,74 @@ public class M03_UF1_PR01_MartinezPau {
                     
 
                     break;
-                case 3:
+                case 3: {
+                    // ===Generador de Art===
 
-                    System.out.print("Generant color aleatori .");
-                    Thread.sleep(500);
-                    r = (int) (Math.random() * 255);
-                    System.out.print("Generant color aleatori . .");
-                    Thread.sleep(500);
-                    g = (int) (Math.random() * 255);
-                    System.out.print("Generant color aleatori . . .");
-                    Thread.sleep(500);
-                    b = (int) (Math.random() * 255);
+                    // Variables
 
-                    System.out.println("El teu color es: ( " + r + ", " + g + ", " + b + " )");
+                    char [] textures = {'▓','▒','░',' '};
 
+                    int canvas; // Pessa menys que un canvas
+                    int esRepeteix; // 0=No 1=Si //TODO Intenta possar boolean
+                    int indexColor; // Color del text
+                    int indexColorBG; // Color del backgraund
+
+                    // Comença
+                    System.out.print("\r");
+                    System.out.print(   "Benvingut a la galeria d'art de Mr.Mathrando:" +
+                                        "====Quin es el tamany de canvas que vols?==== \n" +
+                                        "Introdueix \"Petit\" per un canvas 5x5        \n" +
+                                        "Introdueix \"Mitja\" per un canvas 10x10      \n" +
+                                        "Introdueix \"Gran\" per un canvas 20x20       \n" +
+                                        "============================================= \n" +
+                                        "Seleciona una opcio: ");
+
+                    do { // Verificar qui tamany es
+                        System.out.print("\r");
+                        opcioString = llegir.next(); // For Int
+
+
+                        if (opcioString.equals("Petit")) {
+                            canvas = new char[5][5];
+                            break;
+                        } else if (opcioString.equals("Mitja")) {
+                            canvas = new char[10][10];
+                            break;
+                        }  else if (opcioString.equals("Gran")) {
+                            canvas = new char[20][20];
+                            break;
+
+                        }else {
+                            tipusCorrecte = false;
+
+                            System.out.print("ERROR: Input Incorrecta");
+                            Thread.sleep(1000);
+                            System.out.print("\r");
+                        }
+
+                    } while (tipusCorrecte == false);
+
+                    indexColorBG = (int) (Math.random()*16);
+                    indexColor = (int) (Math.random()*16);
+
+
+                    for (int i = 0; i < canvas.length; i++) {
+                        esRepeteix = (int) (Math.random()*3);
+
+                        if (esRepeteix != 1){
+                            indexColorBG = (int) (Math.random()*16);
+                            indexColor = (int) (Math.random()*16);
+                        }
+
+
+                        for (int j = 0; j < canvas[i].length; j++) {
+                            System.out.print(FOREGROUNDS[indexColor]+BACKGROUNDS[indexColorBG]+textures[]);
+
+                        }
+
+                    }
+
+                }
                     break;
                 case 4:
 
