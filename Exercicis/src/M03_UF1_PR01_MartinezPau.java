@@ -266,8 +266,8 @@ public class M03_UF1_PR01_MartinezPau {
                             System.out.print("ERROR: Input Incorrecta");
                             Thread.sleep(1000);
                         } else {
-                            opcio = llegir.nextInt();
-                            if (opcio < 1 || opcio > 3) {
+                            selecioUser = llegir.nextInt();
+                            if (selecioUser < 1 || selecioUser > 3) {
                                 tipusCorrecte = false;
 
                                 llegir.nextLine();
@@ -277,7 +277,9 @@ public class M03_UF1_PR01_MartinezPau {
                         }
                     } while (tipusCorrecte == false);
 
+                    selecioIA = (int) (Math.random()*3);
 
+                    
 
                     break;
                 case 3:
