@@ -1,6 +1,3 @@
-import com.sun.security.jgss.GSSUtil;
-
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class M03_UF1_PR01_MartinezPau {
@@ -63,14 +60,14 @@ public class M03_UF1_PR01_MartinezPau {
         String[] nom;
         String[] cognom;
 
-        // Opcion
+        // Opció
         int opcio = 0;
-        String opcioString = " "; // Opcio pero en String
+        String opcioString; // Opció pero en String
 
-        // Boolenas
+        // Booleans
         boolean tipusCorrecte;
         boolean endProgram = false;
-        boolean toranarAJugar = false;
+        boolean tornarAJugar = false;
 
         // El Codi comença
         do {
@@ -87,9 +84,9 @@ public class M03_UF1_PR01_MartinezPau {
                             BR_BG_BLACK + GREEN + "| 4. Generador de noms                 |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 5. Sortir de la aplicació            |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "#======================================#\t" + RESET + "\n");
-            System.out.print("Seleciona una opció: ");
+            System.out.print("Selecciona una opció: ");
 
-            do { // Excluim el menu perque no es repetexi cada vegada que fallem
+            do { // excloguem el menu perquè no es repeteixi cada vegada que fallem
                 System.out.print("\r");
                 tipusCorrecte = llegir.hasNextInt(); // For Int
 
@@ -117,13 +114,13 @@ public class M03_UF1_PR01_MartinezPau {
                 // ===== JOC MONEDA ===== //
                 case 1: {
                     // Variables per Joc Monedes
-                    String[] moneda = {YELLOW + "Cara ☻" + RESET, YELLOW + "Creu ♱" + RESET}; // Per poder Ilustrar el resultat
-                    char[] animMoneda = {'⭗', '⭖', '⚊', '⭖'}; // Per fer la animacio de la moneda
+                    String[] moneda = {YELLOW + "Cara ☻" + RESET, YELLOW + "Creu ♱" + RESET}; // Per poder ilustrar el resultat
+                    char[] animMoneda = {'⭗', '⭖', '⚊', '⭖'}; // Per fer l'animació de la moneda
                     char[] animVictoria = {'E', 'N', 'H', 'O', 'R', 'A', 'B', 'O', 'N', 'A'}; // Enhorabona!!
-                    int indexMoneda = 0; // Se utilitzara per saber si has guanyat i per el Math.random
+                    int indexMoneda = 0; // S'utilitzarà per saber si has guanyat i per al Math.random
 
                     do {
-                        toranarAJugar = false; // Revertim a false per no acabar en un loop infinit
+                        tornarAJugar = false; // Revertim a false per no acabar en un loop infinit
 
                         // SubMenu Cara-Creu
                         System.out.print("\r");
@@ -153,13 +150,13 @@ public class M03_UF1_PR01_MartinezPau {
 
                         for (int i = 0; i < 3; i++) { // Animacio Moneda
                             for (char c : animMoneda) {
-                                System.out.print("Tiran moneda: "+ YELLOW + c + RESET);
+                                System.out.print("Tirant moneda: "+ YELLOW + c + RESET);
                                 Thread.sleep(200);
                                 System.out.print("\r");
                             }
                         }
 
-                        for (int i = 0; i < 1; i++) {// Si ho faix fora del for sempre aconsegeixo el mateix resultat
+                        for (int i = 0; i < 1; i++) {// Si ho feia fora del "for" sempre aconsegueixo el mateix resultat
                             indexMoneda = (int) (Math.random() * 2);
                             System.out.println("Ha tocat: " + YELLOW + moneda[indexMoneda] + RESET);
                             Thread.sleep(1000);
@@ -167,7 +164,7 @@ public class M03_UF1_PR01_MartinezPau {
 
 
                         if (opcioString.equals("Cara")) {// Si es cara...
-                            if (indexMoneda == 0) { // Guaña
+                            if (indexMoneda == 0) { // Guanya
                                 for (char c : animVictoria) { // Animacio de Victoria
                                     System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + c + RESET);
                                     Thread.sleep(200);
@@ -179,7 +176,7 @@ public class M03_UF1_PR01_MartinezPau {
                             }
 
                         } else {// Si es creu
-                            if (indexMoneda == 1) { // Guaña
+                            if (indexMoneda == 1) { // Guanya
                                 for (char c : animVictoria) {
                                     System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + c + RESET);
                                     Thread.sleep(200);
@@ -203,7 +200,7 @@ public class M03_UF1_PR01_MartinezPau {
                                 2. Tornar el menu principal
                                 3. Sortir del programa
                                 =====================================
-                                Seleciona una opció:\s""");
+                                Selecciona una opció:\s""");
                         do {
                             System.out.print("\r");
                             tipusCorrecte = llegir.hasNext(); // For Int
@@ -226,7 +223,7 @@ public class M03_UF1_PR01_MartinezPau {
 
                         switch (opcio) {
                             case 1:
-                                toranarAJugar = true;
+                                tornarAJugar = true;
                                 break;
                             case 2:
                                 break;
@@ -235,35 +232,35 @@ public class M03_UF1_PR01_MartinezPau {
                                 break;
                         }
 
-                    } while (toranarAJugar);
+                    } while (tornarAJugar);
                     break;
                 }
                 // ===== ✊ ✋ ✌ ===== //
                 case 2: {
                     // Variables
                     char[] animVictoria = {'E', 'N', 'H', 'O', 'R', 'A', 'B', 'O', 'N', 'A'}; // Enhorabona!!
-                    int selecioIA = 0; // Castejem la variable IA
-                    int selecioUser = 0; // Castejem la varaible per el jugador
+                    int selectionIA; // Castejem la variable IA
+                    int selectionUser = 0; // Castejem la variable per el jugador
                     char[] emojis = {'✊', '✋', '✌'};
 
 
                     do{
 
                         System.out.print("""
-                            Benvingut al joc del predre, paper o tisores\s
+                            Benvingut al joc del pedra, paper o tisores\s
                             Es al millor de 3\s
                             """);
                         System.out.println(" ");
 
 
                         do {
-                            toranarAJugar = false;
+                            tornarAJugar = false;
 
                             // SubMenu Pe-Pa-Ti
                             System.out.print("\r");
                             System.out.print("""
-                                    SELECIONA LA TEVA OPCIO:
-                                     1 per Predra  ✊
+                                    SELECCIONA LA TEVA OPCIO:
+                                     1 per Pedra  ✊
                                      2 per Paper   ✋\s
                                      3 per Tisores ✌ \t""");
 
@@ -275,8 +272,8 @@ public class M03_UF1_PR01_MartinezPau {
                                 System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                 Thread.sleep(1000);
                             } else {
-                                selecioUser = llegir.nextInt();
-                                if (selecioUser < 1 || selecioUser > 3) {
+                                selectionUser = llegir.nextInt();
+                                if (selectionUser < 1 || selectionUser > 3) {
                                     tipusCorrecte = false;
 
                                     llegir.nextLine();
@@ -286,28 +283,28 @@ public class M03_UF1_PR01_MartinezPau {
                             }
                         } while (!tipusCorrecte);
 
-                        selecioIA = (int) (Math.random() * 3);
+                        selectionIA = (int) (Math.random() * 3);
 
-                        String[] animPPT = {"Pedra !","Paper !!","Tissora !!!"};
+                        String[] animPPT = {"Pedra !","Paper !!","Tisores !!!"};
 
-                        for (int i = 0; i < animPPT.length; i++) {
-                            System.out.print(animPPT[i]);
+                        for (String s : animPPT) {
+                            System.out.print(s);
                             Thread.sleep(600);
                             System.out.print("\r");
                         }
 
-                        System.out.println(emojis[(1 - selecioUser)] + " vs. " + emojis [(1 - selecioIA)]);
+                        System.out.println(emojis[(1 - selectionUser)] + " vs. " + emojis [(1 - selectionIA)]);
 
-                        // 1 Pedra  2 Paper  3 Tirora   P vs M
-                        if (selecioUser == selecioIA){
+                        // 1 Pedra  2 Paper  3 Tisora   P vs M
+                        if (selectionUser == selectionIA){
                             System.out.println("Ha sigut un empat");
 
-                        } else if (selecioIA == selecioUser + 1 || (selecioIA == 1 && selecioUser == 3) ) { // Ex: Si User = 1 i IA = 2 El guañador es el qui tingi el numero adjacent mes gran
-                            // el user perd
+                        } else if (selectionIA == selectionUser + 1 || (selectionIA == 1 && selectionUser == 3) ) { // Ex: Si User = 1 i IA = 2 El guanyador és el qui tingui el número adjacent més gran
+                            // El User perd.
                             System.out.println("Has perdut...");
 
-                        } else if (selecioUser == selecioIA + 1 || (selecioUser == 1 && selecioIA == 3) ) {
-                            // el user guanya
+                        } else if (selectionUser == selectionIA + 1 || (selectionUser == 1 && selectionIA == 3) ) {
+                            // El User guanya.
                             for (char c : animVictoria) {
                                 System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + c + RESET);
                                 Thread.sleep(200);
@@ -324,7 +321,7 @@ public class M03_UF1_PR01_MartinezPau {
                                     2. Tornar el menu principal
                                     3. Sortir del programa
                                     =====================================
-                                    Seleciona una opció:\s""");
+                                    Selecciona una opció:\s""");
                         do {
                             System.out.print("\r");
                             tipusCorrecte = llegir.hasNext(); // For Int
@@ -347,7 +344,7 @@ public class M03_UF1_PR01_MartinezPau {
 
                         switch (opcio) {
                             case 1:
-                                toranarAJugar = true;
+                                tornarAJugar = true;
                                 break;
                             case 2:
                                 break;
@@ -356,20 +353,20 @@ public class M03_UF1_PR01_MartinezPau {
                                 break;
                         }
 
-                    } while (toranarAJugar);
+                    } while (tornarAJugar);
 
                     break;
                 }
                 // ===== DU-MB ===== //
                 case 3: {
-                    // DU-MB ve de DA-LLI la IA que pinta i DUMB , ingenios, he?
+                    // DU-MB ve de DA-LLI la IA que pinta i DUMB, enginyós, he?
 
                         // Variables
-                        int canvas = 0; // Pessa menys que un canvas
-                        int esRepeteix = 0; // 0=No 1=Si //TODO Intenta possar boolean
+                        int canvas = 0; // Pesa menys que un canvas
+                        int esRepeteix = 0; // 0=No 1=Si //TODO Intenta posar boolean
 
                         int indexColor = 0; // Color del text
-                        int indexColorBG = 0; // Color del backgraund
+                        int indexColorBG = 0; // Color del background
                         int indexChar = 0;
 
 
@@ -382,9 +379,9 @@ public class M03_UF1_PR01_MartinezPau {
                                         "  Introdueix "+ YELLOW + "\"2\""+ RESET + " per un canvas 20x20\n" +
                                         "  Introdueix "+ YELLOW + "\"3\""+ RESET + " per un canvas 40x40\n" +
                                         GREEN +"  =============================================\n" + RESET +
-                                        "  Seleciona una opcio:\n");
+                                        "  Selecciona una opcio:\n");
 
-                        do { // Excluim el menu perque no es repetexi cada vegada que fallem
+                        do { //Excloguem el menu perquè no es repeteixi cada vegada que fallem
                             System.out.print("\r");
                             tipusCorrecte = llegir.hasNextInt(); // For Int
 
@@ -423,7 +420,7 @@ public class M03_UF1_PR01_MartinezPau {
                                     indexColorBG = (int) (Math.random() * 16);
                                     indexColor = (int) (Math.random() * 16);
 
-                                    indexChar = (int) (Math.random() * 224) + 32; // De aquesta manera possem
+                                    indexChar = (int) (Math.random() * 224) + 32; // D'aquesta manera posem
                                     // max:255 min:32 range: max - min + 1 = 224
                                 }
 
@@ -446,7 +443,7 @@ public class M03_UF1_PR01_MartinezPau {
                                 2. Tornar el menu principal
                                 3. Sortir del programa
                                 =====================================
-                                Seleciona una opció:\s""");
+                                Selecciona una opció:\s""");
 
                         do { // Verifiquem
                             System.out.print("\r");
@@ -470,7 +467,7 @@ public class M03_UF1_PR01_MartinezPau {
 
                         switch (opcio) {
                             case 1:
-                                toranarAJugar = true;
+                                tornarAJugar = true;
                                 System.out.println(" ");
                                 break;
                             case 2:
@@ -480,7 +477,7 @@ public class M03_UF1_PR01_MartinezPau {
                                 break;
                         }
 
-                    } while (toranarAJugar);
+                    } while (tornarAJugar);
 
                         break;
                     }
