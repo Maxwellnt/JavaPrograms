@@ -17,7 +17,7 @@ public class MartinezPau_Exercici2 {
             System.out.println("Quants butlletes vols comprar ( solsament pots comprar entre 1 i 3 butlletes)");
             tipusCorrecte = llegir.hasNextInt(); // For Int
 
-            if (tipusCorrecte == false){
+            if (!tipusCorrecte){
                 llegir.nextLine();
                 System.out.println("ERROR: Input Incorrecta");
             }else{
@@ -28,7 +28,7 @@ public class MartinezPau_Exercici2 {
                     tipusCorrecte = false;
                 }
             }
-        }while (tipusCorrecte == false);
+        }while (!tipusCorrecte);
 
         butlletesUsuari= new int[numButlletes];
 
@@ -38,7 +38,7 @@ public class MartinezPau_Exercici2 {
                 System.out.println("Introdueix els numeros del " + (i+1) + "º butlleti");
                 tipusCorrecte = llegir.hasNextInt(); // For Int
 
-                if (tipusCorrecte == false){
+                if (!tipusCorrecte){
                     llegir.nextLine();
                     System.out.println("ERROR: Input Incorrecta");
                 }else{
@@ -49,14 +49,14 @@ public class MartinezPau_Exercici2 {
                         tipusCorrecte = false;
                     }
                 }
-            }while (tipusCorrecte == false);
+            }while (!tipusCorrecte);
         }
-        System.out.printf("Les butlletes guanyadores son: ");
+        System.out.print("Les butlletes guanyadores son: ");
         for (int i = 0; i <butlletesGuanyadores.length; i++) {
             butlletesGuanyadores [i] = (int)(Math.random()*99999);
             System.out.printf(butlletesGuanyadores[i] + " ");
         }
-        System.out.println("");
+        System.out.println();
         System.out.println("Verifican butlletes...");
 
         for (int i = 0; i < butlletesUsuari.length; i++) {

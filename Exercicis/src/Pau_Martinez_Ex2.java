@@ -15,7 +15,7 @@ public class Pau_Martinez_Ex2 {
         boolean esVIP;
 
         System.out.print("Benvingut al programa");
-        System.out.printf("El client es VIP?  (True/False)");
+        System.out.print("El client es VIP?  (True/False)");
 
         esVIP = llegir.nextBoolean();
 
@@ -23,7 +23,7 @@ public class Pau_Martinez_Ex2 {
 
         baseImponible = llegir.nextFloat();
 
-        if (esVIP == true || baseImponible > 200.00f) {
+        if (esVIP || baseImponible > 200.00f) {
 
             preuFinal = (float) (baseImponible * 1.20);
         }else {

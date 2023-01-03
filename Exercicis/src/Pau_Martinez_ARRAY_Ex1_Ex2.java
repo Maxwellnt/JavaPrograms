@@ -12,13 +12,13 @@ public class Pau_Martinez_ARRAY_Ex1_Ex2 {
             System.out.println("Introdueix un nombre");
             control = llegir.hasNextInt();
 
-            if(control == true){
+            if(control){
                 num [i] = llegir.nextInt();
             }else {
                 llegir.nextLine();
                 System.out.println("Error: Introdueix nombre correta");
             }
-        } while (control== false);
+        } while (!control);
 
             System.out.print("Els nombres son: ");
         }

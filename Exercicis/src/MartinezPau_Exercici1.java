@@ -22,13 +22,13 @@ public class MartinezPau_Exercici1 {
                         "3. Sortir de l'aplicació");
                 tipusCorrecte = llegir.hasNextInt(); // For Int
 
-                if (tipusCorrecte == false) {
+                if (!tipusCorrecte) {
                     System.out.println("ERROR: Input Incorrecta");
                 } else {
                     opcio = llegir.nextInt();
                 }
                 llegir.nextLine();
-            } while (tipusCorrecte == false);
+            } while (!tipusCorrecte);
 
             switch (opcio) {
                 case 1:
@@ -37,13 +37,13 @@ public class MartinezPau_Exercici1 {
                         System.out.println("Introduex els graus en Fahenheit");
                         tipusCorrecte = llegir.hasNextFloat(); // For Float
 
-                        if (tipusCorrecte == false) {
+                        if (!tipusCorrecte) {
                             System.out.println("ERROR: Input Incorrecta");
                         } else {
                             fahenheit = llegir.nextFloat();
                         }
                         llegir.nextLine();
-                    } while (tipusCorrecte == false);
+                    } while (!tipusCorrecte);
 
                     celsius = ((float) 5 / 9 * (fahenheit - 32));
 
@@ -57,13 +57,13 @@ public class MartinezPau_Exercici1 {
                         System.out.println("Introduex la distancia en Millas");
                         tipusCorrecte = llegir.hasNextFloat(); // For Float
 
-                        if (tipusCorrecte == false) {
+                        if (!tipusCorrecte) {
                             System.out.println("ERROR: Input Incorrecta");
                         } else {
                             miles = llegir.nextFloat();
                         }
                         llegir.nextLine();
-                    } while (tipusCorrecte == false);
+                    } while (!tipusCorrecte);
 
                     kilometres = miles * 1.60f;
 

@@ -11,23 +11,23 @@ public class Pau_Martinez_Array_Vector_Mitjana {
             System.out.println("Introdueix quantes notes vols mirar");
             tipusCorrecte = llegir.hasNextInt(); // Nomes mira el valor int del escaner no se apolica a la variable
 
-            if (tipusCorrecte == false){
+            if (!tipusCorrecte){
                 llegir.nextLine(); // Serveix per elimianr el numero del escaner
                 System.out.println("ERROR: Valor incorrecte");
             }else {
                 numNotes=llegir.nextInt(); // Passem sence possar imput perque ja hi ha un valor al escaner
             }
 
-        }while (tipusCorrecte == false);
+        }while (!tipusCorrecte);
 
-        int notes [] = new int[numNotes];
+        int[] notes = new int[numNotes];
 
         for (int i = 0; i <notes.length; i++) {
             do {
                 System.out.println("Que nota vols possar?");
                 tipusCorrecte = llegir.hasNextInt(); // Verifica si valor es INT
 
-                if (tipusCorrecte == false){
+                if (!tipusCorrecte){
                     llegir.nextLine(); // Elimina valor en scan
                 }else {
                     notes [i] = llegir.nextInt(); // Introduex valor

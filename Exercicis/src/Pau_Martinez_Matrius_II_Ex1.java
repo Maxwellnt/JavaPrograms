@@ -29,24 +29,24 @@ public class Pau_Martinez_Matrius_II_Ex1 {
             System.out.println("Definex les dimencion de " + coluna [i]);
             tipusCorrecte = llegir.hasNextInt(); // For Int
 
-            if (tipusCorrecte == false){
+            if (!tipusCorrecte){
                 llegir.nextLine();
                 System.out.println("ERROR: Input Incorrecta");
             }else{
                 valors [i] = llegir.nextInt();}
-        }while (tipusCorrecte == false);
+        }while (!tipusCorrecte);
         }
 
         do {
             System.out.println("Quina matriu voldras? (1-6)");
             tipusCorrecte = llegir.hasNextInt(); // For Int
 
-            if (tipusCorrecte == false){
+            if (!tipusCorrecte){
                 llegir.nextLine();
                 System.out.println("ERROR: Input Incorrecta");
             }else{
                 opcio = llegir.nextInt();}
-        }while (tipusCorrecte == false);
+        }while (!tipusCorrecte);
 
         switch (opcio){
             case 1:
@@ -62,7 +62,7 @@ public class Pau_Martinez_Matrius_II_Ex1 {
                         System.out.print(taula1 [i] [j] + "\t");
 
                     }
-                    System.out.println("");
+                    System.out.println();
                 }
             case 2:
                 int nums = 0;
@@ -78,7 +78,7 @@ public class Pau_Martinez_Matrius_II_Ex1 {
                     for (int j = 0; j < taula2[i].length; j++) {
                         System.out.print(taula2[i][j] + "\t");
                     }
-                    System.out.println("");
+                    System.out.println();
                 }
             case 3:
                 taula3 = new boolean[valors[0]][valors[1]];
@@ -94,7 +94,7 @@ public class Pau_Martinez_Matrius_II_Ex1 {
                     for (int j = 0; j < taula3[i].length; j++) {
                         System.out.print(taula3[i][j] + "\t");
                     }
-                    System.out.println("");
+                    System.out.println();
                 }
             case 4:
                 //if (valors[0] != valors[1])
@@ -114,7 +114,7 @@ public class Pau_Martinez_Matrius_II_Ex1 {
                     for (int j = 0; j < taula4[i].length; j++) {
                         System.out.print(taula4[i][j] + "\t");
                     }
-                    System.out.println("");
+                    System.out.println();
                 }
 
             case 5:
@@ -131,24 +131,16 @@ public class Pau_Martinez_Matrius_II_Ex1 {
                     for (int j = 0; j < taula5[i].length; j++) {
                         System.out.print(taula5[i][j] + "\t");
                     }
-                    System.out.println("");
+                    System.out.println();
                 }
             case 6:
                 taula6= new boolean[valors[0]][valors[1]];
                 for (int i = 0; i < taula6.length; i++) {
                     for (int j = 0; j < taula6[i].length; j++) {
                         if ((i % 2) == 0){
-                            if ((j % 2) == 0){
-                                taula6 [i][j] = true;
-                            }else {
-                                taula6 [i][j] = false;
-                            }
+                            taula6 [i][j] = (j % 2) == 0;
                         }else {
-                            if ((j % 2) == 0){
-                                taula6 [i][j] = false;
-                            }else {
-                                taula6 [i][j] = true;
-                            }
+                            taula6 [i][j] = (j % 2) != 0;
                         }
 
                     }
@@ -160,7 +152,7 @@ public class Pau_Martinez_Matrius_II_Ex1 {
                     for (int j = 0; j < taula6[i].length; j++) {
                         System.out.print(taula6[i][j] + "\t");
                     }
-                    System.out.println("");
+                    System.out.println();
                 }
 
         }

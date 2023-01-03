@@ -71,7 +71,7 @@ public class Pau_Martinez_Strings_II {
                     }else {
                         viveCheck = true;
                     }
-                }while (viveCheck == false);
+                }while (!viveCheck);
 
                 if (paraula.endsWith("ing")){
                     paraula = paraula+"ly";

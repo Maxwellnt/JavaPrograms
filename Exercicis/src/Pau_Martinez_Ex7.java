@@ -21,10 +21,10 @@ public class Pau_Martinez_Ex7 {
 
 
         System.out.println("Benvingut al programa de la agencia sanitaria.");
-        System.out.printf("Has estat exposat al COVID? (true/false)");
+        System.out.print("Has estat exposat al COVID? (true/false)");
         covid = llegir.nextBoolean();
 
-        if (covid == true) {
+        if (covid) {
             salariBase +=  250;
             cobroExtra +=  5;
             cobroExtraEx +=  5;

@@ -86,124 +86,112 @@ public class Pau_Martinez_ESCACS_GAME {
                         "2. 2 JUGADORS");
                 tipusCorrecte = llegir.hasNextInt(); // For Int
 
-                if (tipusCorrecte == false){
+                if (!tipusCorrecte){
                     llegir.nextLine();
                     System.out.println("ERROR: Input Incorrecta");
                 }else{
                     opcio = llegir.nextInt();}
-            }while (tipusCorrecte == false);
+            }while (!tipusCorrecte);
 
-            switch (opcio){
-                case 1:
-                    System.out.println("La AI es molt experimental i segurament moura peces injustament");
-                    int torn = 0;
+        if (opcio == 1) {
+            System.out.println("La AI es molt experimental i segurament moura peces injustament");
+            int torn = 0;
 
-                    for (int i = 0; i < 100; i++) { // Aixi prevenim infinte loop
+            for (int i = 0; i < 100; i++) { // Aixi prevenim infinte loop
 
 
-                        // Imprimim Background
-                        for (int c = 0; c < escacs.length; c++) {
-                            if (c == 8){
-                                for (int j = 0; j < escacs[c].length; j++) {
-                                    System.out.printf(RED+escacs[c][j]+ "\t" + RESET);
-                                }
-
-                            } else if ((c % 2) == 0) {
-                                for (int j = 0; j < escacs[c].length ; j++) {
-                                    if (8 == j){
-                                        System.out.printf(RED+escacs[c][j]+ "\t" + RESET);
-                                        break;
-                                    }else if ((j % 2) == 0){
-                                        System.out.printf(BLACK+escacs[c][j]+ "\t" + RESET);
-                                    }else if ((j % 2) != 0){
-                                        System.out.printf(WHITE+escacs[c][j]+ "\t" + RESET);
-                                    }
-                                }
-
-                            } else {
-                                for (int j = 0; j < escacs[c].length ; j++) {
-                                    if (8 == j){
-                                        System.out.printf(RED+escacs[c][j]+ "\t" + RESET);
-                                        break;
-                                    }else if ((j % 2) == 0){
-                                        System.out.printf(WHITE+escacs[c][j]+ "\t" + RESET);
-                                    }else {
-                                        System.out.printf(BLACK+escacs[c][j]+ "\t" + RESET);
-                                    }
-                                }
-                            }
-
-                            System.out.println("");
+                // Imprimim Background
+                for (int c = 0; c < escacs.length; c++) {
+                    if (c == 8) {
+                        for (int j = 0; j < escacs[c].length; j++) {
+                            System.out.printf(RED + escacs[c][j] + "\t" + RESET);
                         }
 
-
-                        System.out.println("Torn " + i + ": et toca");
-
-                        do { // Es el "do" de verificar les tropes
-                            do { // Es el "do" de verificar les cordenades
-                                // Introduim les cordenades
-                                System.out.println("Introdueix quina pessa vols selecionar (EX: A1)");
-
-                                selecio = llegir.next();
-
-                                //Verifiquem que siguin cordenades
-
-                                for (int j = 0; j < cordenadaX.length; j++) {
-                                    for (int k = 0; k < cordenadaY.length; k++) {
-                                        if (selecio.equals(cordenadaX[k] + cordenadaY[j])) {
-                                            verifCoords = true;
-                                            coordXForPlayer = j;
-                                            coordYForPlayer = k;
-                                            System.out.println("!");
-                                        }
-                                    }
-                                }
-                            }while (verifCoords == false);
-
-                        // Ara verifiquem que la tropa selecionada sigu nostra
-
-
-                        for (int j = 0; j < pesesNegres.length ; j++) {
-                            if (escacs[coordXForPlayer][coordYForPlayer].equals(BLACK_TEXT + pesesNegres[j])) {
-                                verifTropa = false;
+                    } else if ((c % 2) == 0) {
+                        for (int j = 0; j < escacs[c].length; j++) {
+                            if (8 == j) {
+                                System.out.printf(RED + escacs[c][j] + "\t" + RESET);
                                 break;
-                            }else {
-                                verifTropa = true;
+                            } else if ((j % 2) == 0) {
+                                System.out.printf(BLACK + escacs[c][j] + "\t" + RESET);
+                            } else if ((j % 2) != 0) {
+                                System.out.printf(WHITE + escacs[c][j] + "\t" + RESET);
                             }
                         }
 
-                        if (verifTropa == false){
-                            System.out.println("Aquesta tropa no es teva");
-                        }else {
-                            System.out.println("Has selecionat: " + escacs[coordXForPlayer][coordYForPlayer] + RESET);
+                    } else {
+                        for (int j = 0; j < escacs[c].length; j++) {
+                            if (8 == j) {
+                                System.out.printf(RED + escacs[c][j] + "\t" + RESET);
+                                break;
+                            } else if ((j % 2) == 0) {
+                                System.out.printf(WHITE + escacs[c][j] + "\t" + RESET);
+                            } else {
+                                System.out.printf(BLACK + escacs[c][j] + "\t" + RESET);
+                            }
                         }
-                        }while (verifTropa == false);
+                    }
+
+                    System.out.println();
+                }
 
 
-                        // Acebem de verificar la possicio de la nostra pessa
+                System.out.println("Torn " + i + ": et toca");
 
-                        // Per saber si el mobivent es legal o no podriem pintar el backgrund de color verd
+                do { // Es el "do" de verificar les tropes
+                    do { // Es el "do" de verificar les cordenades
+                        // Introduim les cordenades
+                        System.out.println("Introdueix quina pessa vols selecionar (EX: A1)");
 
-                        switch (escacs[coordXForPlayer][coordYForPlayer]){
+                        selecio = llegir.next();
 
-                            case WHITE_TEXT+ "♖": // Movients legals de torre
-                                                    // - Es mou en una lina recta horizontal i vertical
-                                                    // - No salta
+                        //Verifiquem que siguin cordenades
 
-                                for (int j = 0; j < cordenadaX.length; j++) {
+                        for (int j = 0; j < cordenadaX.length; j++) {
+                            for (int k = 0; k < cordenadaY.length; k++) {
+                                if (selecio.equals(cordenadaX[k] + cordenadaY[j])) {
+                                    verifCoords = true;
+                                    coordXForPlayer = j;
+                                    coordYForPlayer = k;
+                                    System.out.println("!");
                                 }
-
-
+                            }
                         }
+                    } while (!verifCoords);
 
-                    }// Acaba la partida
-
-
-
+                    // Ara verifiquem que la tropa selecionada sigu nostra
 
 
+                    for (int j = 0; j < pesesNegres.length; j++) {
+                        if (escacs[coordXForPlayer][coordYForPlayer].equals(BLACK_TEXT + pesesNegres[j])) {
+                            verifTropa = false;
+                            break;
+                        } else {
+                            verifTropa = true;
+                        }
+                    }
+
+                    if (!verifTropa) {
+                        System.out.println("Aquesta tropa no es teva");
+                    } else {
+                        System.out.println("Has selecionat: " + escacs[coordXForPlayer][coordYForPlayer] + RESET);
+                    }
+                } while (!verifTropa);
 
 
-            }
+                // Acebem de verificar la possicio de la nostra pessa
+
+                // Per saber si el mobivent es legal o no podriem pintar el backgrund de color verd
+
+                if (escacs[coordXForPlayer][coordYForPlayer].equals((WHITE_TEXT + "♖"))) { // Movients legals de torre
+                    // - Es mou en una lina recta horizontal i vertical
+                    // - No salta
+
+                    for (int j = 0; j < cordenadaX.length; j++) {
+                    }
+                }
+
+            }// Acaba la partida
+        }
     }
 }

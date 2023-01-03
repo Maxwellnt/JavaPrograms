@@ -15,16 +15,16 @@ public class Pau_Martinez_Array_Ex3 {
         boolean tipusCorrecte;
 
         do {
-            System.out.printf("Benvingut al programa, Introdueix el quants numeros vols posar.");
+            System.out.print("Benvingut al programa, Introdueix el quants numeros vols posar.");
             tipusCorrecte = llegir.hasNextInt();
 
-            if (tipusCorrecte == false){
+            if (!tipusCorrecte){
                 llegir.nextLine();
             }else {
                 indexar = llegir.nextInt();
 
             }
-        }while (tipusCorrecte == false);
+        }while (!tipusCorrecte);
 
         num = new int[indexar];
 
@@ -34,12 +34,12 @@ public class Pau_Martinez_Array_Ex3 {
                 System.out.println("Introdueix el Numero");
                 tipusCorrecte = llegir.hasNextInt(); // Nomes mira el valor int del escaner no se apolica a la variable
 
-                if (tipusCorrecte == false){
+                if (!tipusCorrecte){
                     llegir.nextLine(); // Serveix per elimianr el numero del escaner
                 }else {
                     num [i] = llegir.nextInt(); // Passem sence possar imput perque ja hi ha un valor al escaner
                 }
-            }while (tipusCorrecte == false);
+            }while (!tipusCorrecte);
 
 
             if (num[i] > 0  ){

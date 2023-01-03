@@ -12,7 +12,7 @@ public class Pau_Martinez_Matriu_Ex4 {
                 System.out.print(figura [i][j] + " ");
 
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }

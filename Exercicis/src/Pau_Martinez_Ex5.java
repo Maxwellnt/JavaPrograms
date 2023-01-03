@@ -19,7 +19,7 @@ public class Pau_Martinez_Ex5 {
 
         esFull = llegir.nextBoolean();
 
-        if (esFull == true){
+        if (esFull){
             preuVolks =+ 20000;
         }
 
@@ -27,7 +27,7 @@ public class Pau_Martinez_Ex5 {
 
         km = llegir.nextFloat();
 
-        preuMercat = (float) (preuVolks - ( (float)(preuVolks * 0.00001) * km));
+        preuMercat = preuVolks - ( (float)(preuVolks * 0.00001) * km);
 
         System.out.printf("El preu de mercat del teu Volksvagen es: %.2f €", preuMercat);
 

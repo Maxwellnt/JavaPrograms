@@ -9,7 +9,7 @@ public class M03_UF1_PR01_MartinezPau {
         Scanner llegir = new Scanner(System.in);
 
         // Colors
-        // Foregrounds
+            // Foregrounds
         final String RESET = "\u001B[0m";
         final String BLACK = "\u001B[30m";
         final String RED = "\u001B[31m";
@@ -27,6 +27,7 @@ public class M03_UF1_PR01_MartinezPau {
         final String BR_PURPLE = "\u001B[95m";
         final String BR_CYAN = "\u001B[96m";
         final String BR_WHITE = "\u001B[97m";
+
         final String[] FOREGROUNDS = {
                 BLACK, RED, GREEN, YELLOW,
                 BLUE, PURPLE, CYAN, WHITE,
@@ -64,7 +65,7 @@ public class M03_UF1_PR01_MartinezPau {
 
         // Opcion
         int opcio = 0;
-        String opcioString = ""; // Opcio pero en String
+        String opcioString = " "; // Opcio pero en String
 
         // Boolenas
         boolean tipusCorrecte;
@@ -81,12 +82,11 @@ public class M03_UF1_PR01_MartinezPau {
 
                             BR_BG_BLACK + GREEN + "#======================================#\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 1. Cara o creu (" + YELLOW + "Ara amb animacio!!" + RESET + BR_BG_BLACK + GREEN + ")  |\t" + RESET + "\n" +
-                            BR_BG_BLACK + GREEN + "| 2. Pedra, Paper i tisora (✊ ✋ ✌) |\t" + RESET + "\n" +
+                            BR_BG_BLACK + GREEN + "| 2. Pedra, Paper i tisora (✊ ✋ ✌)   |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 3. Generador d'art                   |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 4. Generador de noms                 |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 5. Sortir de la aplicació            |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "#======================================#\t" + RESET + "\n");
-
             System.out.print("Seleciona una opció: ");
 
             do { // Excluim el menu perque no es repetexi cada vegada que fallem
@@ -94,9 +94,9 @@ public class M03_UF1_PR01_MartinezPau {
                 tipusCorrecte = llegir.hasNextInt(); // For Int
 
 
-                if (tipusCorrecte == false) {
+                if (!tipusCorrecte) {
                     llegir.nextLine();
-                    System.out.print("ERROR: Input Incorrecta");
+                    System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                     Thread.sleep(1000);
                     System.out.print("\r");
                 } else {
@@ -105,12 +105,12 @@ public class M03_UF1_PR01_MartinezPau {
                         tipusCorrecte = false;
 
                         llegir.nextLine();
-                        System.out.print("ERROR: Input Incorrecta");
+                        System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                         Thread.sleep(1000);
                         System.out.print("\r");
                     }
                 }
-            } while (tipusCorrecte == false);
+            } while (!tipusCorrecte);
 
             switch (opcio) {
 
@@ -143,17 +143,17 @@ public class M03_UF1_PR01_MartinezPau {
                             } else {
                                 tipusCorrecte = false;
 
-                                System.out.print("ERROR: Input Incorrecta");
+                                System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                 Thread.sleep(1000);
                                 System.out.print("\r");
                             }
 
-                        } while (tipusCorrecte == false);
+                        } while (!tipusCorrecte);
 
 
                         for (int i = 0; i < 3; i++) { // Animacio Moneda
-                            for (int j = 0; j < animMoneda.length; j++) {
-                                System.out.print("Tiran moneda: " + animMoneda[j] + " ");
+                            for (char c : animMoneda) {
+                                System.out.print("Tiran moneda: "+ YELLOW + c + RESET);
                                 Thread.sleep(200);
                                 System.out.print("\r");
                             }
@@ -161,32 +161,30 @@ public class M03_UF1_PR01_MartinezPau {
 
                         for (int i = 0; i < 1; i++) {// Si ho faix fora del for sempre aconsegeixo el mateix resultat
                             indexMoneda = (int) (Math.random() * 2);
-                            System.out.println("Ha tocat: " + moneda[indexMoneda]);
+                            System.out.println("Ha tocat: " + YELLOW + moneda[indexMoneda] + RESET);
                             Thread.sleep(1000);
                         }
 
 
                         if (opcioString.equals("Cara")) {// Si es cara...
                             if (indexMoneda == 0) { // Guaña
-                                for (int i = 0; i < animVictoria.length; i++) { // Animacio de Victoria
-                                    System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + animVictoria[i] + RESET);
+                                for (char c : animVictoria) { // Animacio de Victoria
+                                    System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + c + RESET);
                                     Thread.sleep(200);
                                 }
-                                System.out.println("");
-                                System.out.println("Has guanyat!!");
+                                System.out.println("\tHas guanyat!!");
 
                             } else { // Perd
                                 System.out.println("Has perdut..");
                             }
 
-                        } else if (opcioString.equals("Creu")) {// Si es creu
+                        } else {// Si es creu
                             if (indexMoneda == 1) { // Guaña
-                                for (int i = 0; i < animVictoria.length; i++) {
-                                    System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + animVictoria[i] + RESET);
+                                for (char c : animVictoria) {
+                                    System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + c + RESET);
                                     Thread.sleep(200);
                                 }
-                                System.out.println(RESET);
-                                System.out.println("Has guanyat!!");
+                                System.out.println("\tHas guanyat!!");
 
                             } else { // Perd
                                 System.out.println("Has perdut..");
@@ -195,22 +193,24 @@ public class M03_UF1_PR01_MartinezPau {
                         }
                         Thread.sleep(1000);
 
-                        // Final del joc de la moneda
+                        // ===== Final del joc de la moneda =====
 
-                        System.out.print("Que vols fer?: \n" +
-                                "=====================================\n" +
-                                "1. Tornar a jugar\n" +
-                                "2. Tornar el menu principal\n" +
-                                "3. Sortir del programa\n" +
-                                "=====================================\n" +
-                                "Seleciona una opció: ");
+
+                        System.out.print("""
+                                Que vols fer?:\s
+                                =====================================
+                                1. Tornar a jugar
+                                2. Tornar el menu principal
+                                3. Sortir del programa
+                                =====================================
+                                Seleciona una opció:\s""");
                         do {
                             System.out.print("\r");
                             tipusCorrecte = llegir.hasNext(); // For Int
 
-                            if (tipusCorrecte == false) {
+                            if (!tipusCorrecte) {
                                 llegir.nextLine();
-                                System.out.print("ERROR: Input Incorrecta");
+                                System.out.print(BG_RED + "ERROR: Input Incorrecta" + RESET);
                                 Thread.sleep(1000);
                             } else {
                                 opcio = llegir.nextInt();
@@ -218,11 +218,11 @@ public class M03_UF1_PR01_MartinezPau {
                                     tipusCorrecte = false;
 
                                     llegir.nextLine();
-                                    System.out.print("ERROR: Input Incorrecta");
+                                    System.out.print(BG_RED + "ERROR: Input Incorrecta" + RESET);
                                     Thread.sleep(1000);
                                 }
                             }
-                        } while (tipusCorrecte == false);
+                        } while (!tipusCorrecte);
 
                         switch (opcio) {
                             case 1:
@@ -235,102 +235,163 @@ public class M03_UF1_PR01_MartinezPau {
                                 break;
                         }
 
-                    } while (toranarAJugar == true);
+                    } while (toranarAJugar);
                     break;
                 }
                 // ===== ✊ ✋ ✌ ===== //
                 case 2: {
                     // Variables
+                    char[] animVictoria = {'E', 'N', 'H', 'O', 'R', 'A', 'B', 'O', 'N', 'A'}; // Enhorabona!!
                     int selecioIA = 0; // Castejem la variable IA
                     int selecioUser = 0; // Castejem la varaible per el jugador
                     char[] emojis = {'✊', '✋', '✌'};
 
-                    System.out.print("Benvingut al joc del predre, paper o tisores \n"
-                                    + "Es al millor de 3 \n");
-                    System.out.println("");
+
+                    do{
+
+                        System.out.print("""
+                            Benvingut al joc del predre, paper o tisores\s
+                            Es al millor de 3\s
+                            """);
+                        System.out.println(" ");
 
 
-                    do {
-                        // SubMenu Pe-Pa-Ti
-                        System.out.print("\r");
-                        System.out.print("SELECIONA:\n" +
-                                " 1 per Predra  ✊\n" +
-                                " 2 per Paper   ✋ \n" +
-                                " 3 per Tisores ✌");
+                        do {
+                            toranarAJugar = false;
 
-                        tipusCorrecte = llegir.hasNextInt(); // For Int
+                            // SubMenu Pe-Pa-Ti
+                            System.out.print("\r");
+                            System.out.print("""
+                                    SELECIONA LA TEVA OPCIO:
+                                     1 per Predra  ✊
+                                     2 per Paper   ✋\s
+                                     3 per Tisores ✌ \t""");
+
+                            tipusCorrecte = llegir.hasNextInt(); // For Int
 
 
-                        if (tipusCorrecte == false) {
-                            llegir.nextLine();
-                            System.out.print("ERROR: Input Incorrecta");
-                            Thread.sleep(1000);
-                        } else {
-                            selecioUser = llegir.nextInt();
-                            if (selecioUser < 1 || selecioUser > 3) {
-                                tipusCorrecte = false;
-
+                            if (!tipusCorrecte) {
                                 llegir.nextLine();
-                                System.out.print("ERROR: Input Incorrecta");
+                                System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                 Thread.sleep(1000);
+                            } else {
+                                selecioUser = llegir.nextInt();
+                                if (selecioUser < 1 || selecioUser > 3) {
+                                    tipusCorrecte = false;
+
+                                    llegir.nextLine();
+                                    System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
+                                    Thread.sleep(1000);
+                                }
                             }
+                        } while (!tipusCorrecte);
+
+                        selecioIA = (int) (Math.random() * 3);
+
+                        String[] animPPT = {"Pedra !","Paper !!","Tissora !!!"};
+
+                        for (int i = 0; i < animPPT.length; i++) {
+                            System.out.print(animPPT[i]);
+                            Thread.sleep(600);
+                            System.out.print("\r");
                         }
-                    } while (tipusCorrecte == false);
 
-                    selecioIA = (int) (Math.random() * 3);
+                        System.out.println(emojis[(1 - selecioUser)] + " vs. " + emojis [(1 - selecioIA)]);
 
-                    System.out.print("Pedra");
-                    System.out.print("\r");
-                    Thread.sleep(1000);
-                    System.out.print("Paper");
-                    System.out.print("\r");
-                    Thread.sleep(1000);
-                    System.out.print("Tisora");
-                    System.out.print("\r");
-                    Thread.sleep(1000);
+                        // 1 Pedra  2 Paper  3 Tirora   P vs M
+                        if (selecioUser == selecioIA){
+                            System.out.println("Ha sigut un empat");
 
-                    if (selecioUser == selecioIA){
-                        System.out.println("Wa...");
-                    }else {
-                        //uffff....
-                        
-                    }
+                        } else if (selecioIA == selecioUser + 1 || (selecioIA == 1 && selecioUser == 3) ) { // Ex: Si User = 1 i IA = 2 El guañador es el qui tingi el numero adjacent mes gran
+                            // el user perd
+                            System.out.println("Has perdut...");
+
+                        } else if (selecioUser == selecioIA + 1 || (selecioUser == 1 && selecioIA == 3) ) {
+                            // el user guanya
+                            for (char c : animVictoria) {
+                                System.out.print(FOREGROUNDS[(int) (Math.random() * 16)] + c + RESET);
+                                Thread.sleep(200);
+                            }
+
+                            System.out.println("\t Has guanyat!!");
+                        }
+
+
+                        System.out.print("""
+                                    Que vols fer?:\s
+                                    =====================================
+                                    1. Tornar a jugar
+                                    2. Tornar el menu principal
+                                    3. Sortir del programa
+                                    =====================================
+                                    Seleciona una opció:\s""");
+                        do {
+                            System.out.print("\r");
+                            tipusCorrecte = llegir.hasNext(); // For Int
+
+                            if (!tipusCorrecte) {
+                                llegir.nextLine();
+                                System.out.print(BG_RED + "ERROR: Input Incorrecta" + RESET);
+                                Thread.sleep(1000);
+                            } else {
+                                opcio = llegir.nextInt();
+                                if (opcio < 1 || opcio > 3) {
+                                    tipusCorrecte = false;
+
+                                    llegir.nextLine();
+                                    System.out.print(BG_RED + "ERROR: Input Incorrecta" + RESET);
+                                    Thread.sleep(1000);
+                                }
+                            }
+                        } while (!tipusCorrecte);
+
+                        switch (opcio) {
+                            case 1:
+                                toranarAJugar = true;
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                endProgram = true;
+                                break;
+                        }
+
+                    } while (toranarAJugar);
 
                     break;
                 }
                 // ===== DU-MB ===== //
                 case 3: {
-                        // ===Generador de Art===
+                    // DU-MB ve de DA-LLI la IA que pinta i DUMB , ingenios, he?
 
                         // Variables
-
-                        char[] textures = {'▓', '▒', '░', ' '};
-
                         int canvas = 0; // Pessa menys que un canvas
                         int esRepeteix = 0; // 0=No 1=Si //TODO Intenta possar boolean
 
                         int indexColor = 0; // Color del text
                         int indexColorBG = 0; // Color del backgraund
-                        int indexTextures = 0;
+                        int indexChar = 0;
+
 
                         // Comença
+                    do{
                         System.out.print("\r");
-                        System.out.print("Benvingut a la galeria d'art de Mr.Mathrando:" +
-                                "====Quin es el tamany de canvas que vols?==== \n" +
-                                "Introdueix \"1\" per un canvas 5x5        \n" +
-                                "Introdueix \"2\" per un canvas 10x10      \n" +
-                                "Introdueix \"3\" per un canvas 20x20       \n" +
-                                "============================================= \n" +
-                                "Seleciona una opcio: ");
+                        System.out.print(" Benvingut a la galeria d'art de DU-MB: \n" +
+                                        GREEN +"  ====Quin es el tamany de canvas que vols?====\n" + RESET +
+                                        "  Introdueix "+ YELLOW + "\"2\""+ RESET + " per un canvas 10x10\n" +
+                                        "  Introdueix "+ YELLOW + "\"2\""+ RESET + " per un canvas 20x20\n" +
+                                        "  Introdueix "+ YELLOW + "\"3\""+ RESET + " per un canvas 40x40\n" +
+                                        GREEN +"  =============================================\n" + RESET +
+                                        "  Seleciona una opcio:\n");
 
                         do { // Excluim el menu perque no es repetexi cada vegada que fallem
                             System.out.print("\r");
                             tipusCorrecte = llegir.hasNextInt(); // For Int
 
 
-                            if (tipusCorrecte == false) {
+                            if (!tipusCorrecte) {
                                 llegir.nextLine();
-                                System.out.print("ERROR: Input Incorrecta");
+                                System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                 Thread.sleep(1000);
                                 System.out.print("\r");
                             } else {
@@ -339,23 +400,20 @@ public class M03_UF1_PR01_MartinezPau {
                                     tipusCorrecte = false;
 
                                     llegir.nextLine();
-                                    System.out.print("ERROR: Input Incorrecta");
+                                    System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                     Thread.sleep(1000);
                                     System.out.print("\r");
                                 }
                             }
-                        } while (tipusCorrecte == false);
+                        } while (!tipusCorrecte);
 
                         switch (opcio) {
-                            case 1 -> canvas = 5;
-                            case 2 -> canvas = 10;
-                            case 3 -> canvas = 20;
+                            case 1 -> canvas = 10;
+                            case 2 -> canvas = 20;
+                            case 3 -> canvas = 40;
 
                         }
 
-                        esRepeteix = 0; // Axi ens asegurem que el programa esqulli
-
-                        System.out.println(canvas);
                         for (int i = 0; i < canvas; i++) {
 
 
@@ -364,33 +422,39 @@ public class M03_UF1_PR01_MartinezPau {
                                 if (esRepeteix != 1) {
                                     indexColorBG = (int) (Math.random() * 16);
                                     indexColor = (int) (Math.random() * 16);
-                                    indexTextures = (int) (Math.random() * 4);
+
+                                    indexChar = (int) (Math.random() * 224) + 32; // De aquesta manera possem
+                                    // max:255 min:32 range: max - min + 1 = 224
                                 }
-                                esRepeteix = (int) (Math.random() * 3);
+
+                                esRepeteix = (int) (Math.random() * 6) ;
+
 
                                 System.out.print(FOREGROUNDS[indexColor] + BACKGROUNDS[indexColorBG]
-                                        + " " + textures[indexTextures] + " " + RESET);
+                                        + " " + (char) (indexChar) + " " + RESET);
 
                             }
-                            System.out.println(" ");
+                            System.out.print("\n");
 
                         }
                         System.out.println();
 
-                        System.out.print("Que vols fer?: \n" +
-                                "=====================================\n" +
-                                "1. Tornar a pintar\n" +
-                                "2. Tornar el menu principal\n" +
-                                "3. Sortir del programa\n" +
-                                "=====================================\n" +
-                                "Seleciona una opció: ");
-                        do {
+                        System.out.print("""
+                                Que vols fer?:\s
+                                =====================================
+                                1. Tornar a pintar
+                                2. Tornar el menu principal
+                                3. Sortir del programa
+                                =====================================
+                                Seleciona una opció:\s""");
+
+                        do { // Verifiquem
                             System.out.print("\r");
                             tipusCorrecte = llegir.hasNext(); // For Int
 
-                            if (tipusCorrecte == false) {
+                            if (!tipusCorrecte) {
                                 llegir.nextLine();
-                                System.out.print("ERROR: Input Incorrecta");
+                                System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                 Thread.sleep(1000);
                             } else {
                                 opcio = llegir.nextInt();
@@ -398,14 +462,29 @@ public class M03_UF1_PR01_MartinezPau {
                                     tipusCorrecte = false;
 
                                     llegir.nextLine();
-                                    System.out.print("ERROR: Input Incorrecta");
+                                    System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
                                     Thread.sleep(1000);
                                 }
                             }
-                        } while (tipusCorrecte == false);
+                        } while (!tipusCorrecte);
+
+                        switch (opcio) {
+                            case 1:
+                                toranarAJugar = true;
+                                System.out.println(" ");
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                endProgram = true;
+                                break;
+                        }
+
+                    } while (toranarAJugar);
 
                         break;
                     }
+
                 // ===== Genera ===== //
                 case 4:
 
@@ -420,6 +499,6 @@ public class M03_UF1_PR01_MartinezPau {
                 }
 
 
-            }while (endProgram != true) ;
+            }while (!endProgram) ;
         }
     }

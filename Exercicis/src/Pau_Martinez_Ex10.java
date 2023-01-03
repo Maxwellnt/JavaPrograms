@@ -31,7 +31,7 @@ public class Pau_Martinez_Ex10 {
         System.out.println("Com esta el mercat? (Alça:True / Baixa:False)");
         mercatEstable = llegir.nextBoolean();
 
-        if (mercatEstable == true){
+        if (mercatEstable){
 
             crypto *= 1.02;
         }else {

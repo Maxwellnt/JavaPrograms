@@ -20,7 +20,7 @@ public class Pau_Martinez_Matriu_Ex_Encript {
             for (int j = 0; j < numsNom[i].length; j++) {
                 System.out.print(numsNom[i][j] + "\t");
             }
-            System.out.println("");
+            System.out.println();
         }
 
         System.out.println("Descodificant...");
@@ -36,7 +36,7 @@ public class Pau_Martinez_Matriu_Ex_Encript {
             for (int j = 0; j < charNom[i].length; j++) {
                 System.out.print(charNom[i][j] + "\t");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }

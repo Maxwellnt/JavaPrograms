@@ -28,7 +28,7 @@ public class Pau_Martinez_Matrius_Ex3 {
                 System.out.print(figura [i][j] + " ");
 
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }

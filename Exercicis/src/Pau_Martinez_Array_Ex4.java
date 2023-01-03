@@ -17,19 +17,19 @@ public class Pau_Martinez_Array_Ex4 {
         System.out.println("Benvingut al programa, per default la logitut de les arrys a i b es 10, vols editarlo? (true/false)");
         editarMatriu = llegir.nextBoolean();
 
-        if (editarMatriu == true) {
+        if (editarMatriu) {
 
             do {
                 System.out.println("Introdueix quants index vols al (a i b) ");
 
                 dataControl = llegir.hasNextInt();
-                if (dataControl == false) {
+                if (!dataControl) {
                     llegir.nextLine();
                 } else {
                     indexA = llegir.nextInt();
                     indexB = indexA;
                 }
-            } while (dataControl == false || indexA < 0);
+            } while (!dataControl || indexA < 0);
             a = new int[indexA];
             b = new int[indexB];
 
@@ -42,23 +42,23 @@ public class Pau_Martinez_Array_Ex4 {
                 System.out.println("Intordueix el "+ (i+1)+ "º nombre de a");
                 dataControl = llegir.hasNextInt();
 
-                if (dataControl == false) {
+                if (!dataControl) {
                     llegir.nextLine();
                 } else {
                     a [i] = llegir.nextInt();
                 }
-            } while (dataControl == false);
+            } while (!dataControl);
 
             do {
                 System.out.println("Intordueix el "+ (i+1)+ "º nombre de b");
                 dataControl = llegir.hasNextInt();
 
-                if (dataControl == false) {
+                if (!dataControl) {
                     llegir.nextLine();
                 } else {
                     b [i] = llegir.nextInt();
                 }
-            } while (dataControl == false);
+            } while (!dataControl);
 
 
 

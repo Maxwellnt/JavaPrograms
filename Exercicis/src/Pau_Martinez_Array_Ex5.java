@@ -6,8 +6,8 @@ public class Pau_Martinez_Array_Ex5 {
 
         Scanner llegir = new Scanner(System.in);
 
-        int num1 [] = new int[10];
-        int num2 [] = new int[10];
+        int[] num1 = new int[10];
+        int[] num2 = new int[10];
 
         for (int i = 0; i < num1.length; i++) {
             num1 [i] = (int) (Math.random()*10);

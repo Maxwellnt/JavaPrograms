@@ -14,7 +14,7 @@ public class Pau_Martinez_DataControl {
             System.out.println("Escriu un enter entre "+ MIN + " i " + MAX);
             tipusCorrecte = llegir.hasNextInt(); // Nomes mira el valor int del escaner no se apolica a la variable
 
-            if (tipusCorrecte == false){
+            if (!tipusCorrecte){
                 llegir.nextLine(); // Serveix per elimianr el numero del escaner
             }else {
                 numero = llegir.nextInt(); // Passem sence possar imput perque ja hi ha un valor al escaner
@@ -22,7 +22,7 @@ public class Pau_Martinez_DataControl {
                     tipusCorrecte = false;
                 }
             }
-        }while (tipusCorrecte == false);
+        }while (!tipusCorrecte);
 
         System.out.println("Has intruduit el numero enter: "+ numero);
     }

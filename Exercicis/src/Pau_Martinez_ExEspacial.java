@@ -22,7 +22,7 @@ public class Pau_Martinez_ExEspacial {
             System.out.println("Introdueix el preu de la compra sensa IVA");
             dataControl = llegir.hasNextFloat();
 
-            if (dataControl == false){
+            if (!dataControl){
                 llegir.nextLine();
             }else{
                     // == Error en Temps de execution == //
@@ -32,7 +32,7 @@ public class Pau_Martinez_ExEspacial {
 
                 preuFinal = preu * IVA;
             }
-        }while (dataControl == false);
+        }while (!dataControl);
 
             // == Error en Temps de execucio == //
         System.out.printf("El total sense IVA es: %.2f", preu);

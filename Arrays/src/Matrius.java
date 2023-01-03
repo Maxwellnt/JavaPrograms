@@ -54,7 +54,7 @@ public class Matrius {
                         + "");
                 tipusCorrecte = llegir.hasNextInt(); // Nomes mira el valor int del escaner no se apolica a la variable
 
-                if (tipusCorrecte == false) {
+                if (!tipusCorrecte) {
                     llegir.nextLine(); // Serveix per elimianr el numero del escaner
                 } else {
                     opcio = llegir.nextInt(); // Passem sence possar imput perque ja hi ha un valor al escaner
@@ -68,14 +68,14 @@ public class Matrius {
                     for (int i = 0; i < diesSetmana.length; i++) {
                         System.out.printf("%15s", diesSetmana[i]);
                     }
-                    System.out.println("");
+                    System.out.println();
 
                     for (int fila = 0; fila < horari.length; fila++) {
                         System.out.print(torn[fila] + "\t"); // Matí o Tarda
                         for (int col = 0; col < horari[fila].length; col++) {
                             System.out.print(horari[fila][col] + "\t\t");
                         }
-                        System.out.println("");
+                        System.out.println();
                     }
                     break;
                 case 2:
@@ -86,13 +86,13 @@ public class Matrius {
                         );
                         tipusCorrecte = llegir.hasNextInt(); // Nomes mira el valor int del escaner no se apolica a la variable
 
-                        if (tipusCorrecte == false) {
+                        if (!tipusCorrecte) {
                             llegir.nextLine(); // Serveix per elimianr el numero del escaner
                         } else {
                             opcio = llegir.nextInt(); // Passem sence possar imput perque ja hi ha un valor al escaner
                         }
 
-                    } while (tipusCorrecte = false  || opcio < 1 || opcio > 2);
+                    } while (tipusCorrecte = opcio < 1 || opcio > 2);
                     opcio -= 1;
 
                         for (int i = 0; i < horari[opcio].length; i++) {
@@ -113,13 +113,13 @@ public class Matrius {
 
                         tipusCorrecte = llegir.hasNextInt(); // Nomes mira el valor int del escaner no se apolica a la variable
 
-                        if (tipusCorrecte == false) {
+                        if (!tipusCorrecte) {
                             llegir.nextLine(); // Serveix per elimianr el numero del escaner
                         } else {
                             opcio = llegir.nextInt(); // Passem sence possar imput perque ja hi ha un valor al escaner
                         }
 
-                    } while (tipusCorrecte = false  || opcio < 1 || opcio > 5);
+                    } while (tipusCorrecte = opcio < 1 || opcio > 5);
                     opcio -= 1;
 
                     if (opcio == 4){
