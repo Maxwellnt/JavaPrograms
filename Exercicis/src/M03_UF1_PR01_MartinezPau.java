@@ -55,10 +55,9 @@ public class M03_UF1_PR01_MartinezPau {
                 BR_BG_BLACK, BR_BG_RED, BR_BG_GREEN, BR_BG_YELLOW,
                 BR_BG_BLUE, BR_BG_PURPLE, BR_BG_CYAN, BR_BG_WHITE};
 
-        // Arrays
 
-        String[] nom;
-        String[] cognom;
+        int puntuacioUsuari = 0;
+        int puntuacioIA = 0;
 
         // Opció
         int opcio = 0;
@@ -75,9 +74,8 @@ public class M03_UF1_PR01_MartinezPau {
             // Menu principal // 1:v 2:X 3:R
             System.out.print("\r");
             System.out.print(
-                    BR_BG_BLACK + "BENVINGUTS AL MENU:                        \t" + RESET + "\n" +
-
-                            BR_BG_BLACK + GREEN + "#======================================#\t" + RESET + "\n" +
+                            BR_BG_BLACK + "BENVINGUTS AL MENU:                        \t" + RESET + "\n" +
+                            BR_BG_BLACK + GREEN + "#===============" + BG_WHITE + " "+ BLUE + puntuacioUsuari + GREEN + " vs " + RED + puntuacioIA +" " + BR_BG_BLACK + GREEN + "===============#\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 1. Cara o creu (" + YELLOW + "Ara amb animacio!!" + RESET + BR_BG_BLACK + GREEN + ")  |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 2. Pedra, Paper i tisora (✊ ✋ ✌)   |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 3. Generador d'art                   |\t" + RESET + "\n" +
@@ -482,12 +480,21 @@ public class M03_UF1_PR01_MartinezPau {
                         break;
                     }
 
-                // ===== Genera ===== //
+                // ===== El aogado ===== //
                 case 4:
+
+                    String paraules[][] = {{"Abraç", "Casa", "Esport", "Final", "Caure", "Contes", "Marit", "Pedra", "Vaca", "Llapis", "Teoria", "Mare", "Nebot", "Sang", "Infern", "Rodona", "Xiulet", "Llavor"}, // Hi ha les facils 4-6 lletres sense accents
+                            {"Cambrera", "Empresari", "Jutgessa", "Perruqueria", "Quadrat", "Correu", "Internet", "Planejar", "Peixatera", "Folklore", "Costelles", "Acupuntura", "Lleialtat", "Superheroi", "Superheroi"}, // Hi ha les normals 16+ lletres amb accents
+                            {"Monorefringència", "Drogodependència", "Espectroradiometria", "Microminiaturització", "Ferrihemoglobina", "Mineralitzadores", "Llatinoamericans", "Irreversiblement", "Invulnerabilitat"}}; // I les difícils...
+
+                    int dificultat = 0;
+
+                    
+
 
                         break;
 
-                case 6:
+                case 5:
                         endProgram = true;
 
                         break;
