@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class M03_UF1_PR01_MartinezPau {
@@ -56,8 +57,8 @@ public class M03_UF1_PR01_MartinezPau {
                 BR_BG_BLUE, BR_BG_PURPLE, BR_BG_CYAN, BR_BG_WHITE};
 
 
-        int puntuacioUsuari = 0;
-        int puntuacioIA = 0;
+        int puntuaccioUsuari = 0;
+        int puntuaccioIA = 0;
 
         // Opció
         int opcio = 0;
@@ -75,11 +76,11 @@ public class M03_UF1_PR01_MartinezPau {
             System.out.print("\r");
             System.out.print(
                             BR_BG_BLACK + "BENVINGUTS AL MENU:                        \t" + RESET + "\n" +
-                            BR_BG_BLACK + GREEN + "#===============" + BG_WHITE + " "+ BLUE + puntuacioUsuari + GREEN + " vs " + RED + puntuacioIA +" " + BR_BG_BLACK + GREEN + "===============#\t" + RESET + "\n" +
+                            BR_BG_BLACK + GREEN + "#===============" + BG_WHITE + " "+ BLUE + puntuaccioUsuari + GREEN + " vs " + RED + puntuaccioIA +" " + BR_BG_BLACK + GREEN + "===============#\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 1. Cara o creu (" + YELLOW + "Ara amb animacio!!" + RESET + BR_BG_BLACK + GREEN + ")  |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 2. Pedra, Paper i tisora (✊ ✋ ✌)   |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 3. Generador d'art                   |\t" + RESET + "\n" +
-                            BR_BG_BLACK + GREEN + "| 4. Generador de noms                 |\t" + RESET + "\n" +
+                            BR_BG_BLACK + GREEN + "| 4. El penjat                         |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "| 5. Sortir de la aplicació            |\t" + RESET + "\n" +
                             BR_BG_BLACK + GREEN + "#======================================#\t" + RESET + "\n");
             System.out.print("Selecciona una opció: ");
@@ -168,9 +169,11 @@ public class M03_UF1_PR01_MartinezPau {
                                     Thread.sleep(200);
                                 }
                                 System.out.println("\tHas guanyat!!");
+                                puntuaccioUsuari +=1;
 
                             } else { // Perd
                                 System.out.println("Has perdut..");
+                                puntuaccioIA +=1;
                             }
 
                         } else {// Si es creu
@@ -180,9 +183,10 @@ public class M03_UF1_PR01_MartinezPau {
                                     Thread.sleep(200);
                                 }
                                 System.out.println("\tHas guanyat!!");
-
+                                puntuaccioUsuari +=1;
                             } else { // Perd
                                 System.out.println("Has perdut..");
+                                puntuaccioIA +=1;
                             }
 
                         }
@@ -233,13 +237,14 @@ public class M03_UF1_PR01_MartinezPau {
                     } while (tornarAJugar);
                     break;
                 }
+
                 // ===== ✊ ✋ ✌ ===== //
                 case 2: {
                     // Variables
                     char[] animVictoria = {'E', 'N', 'H', 'O', 'R', 'A', 'B', 'O', 'N', 'A'}; // Enhorabona!!
-                    int selectionIA; // Castejem la variable IA
+                    int selectionIA = 0; // Castejem la variable IA
                     int selectionUser = 0; // Castejem la variable per el jugador
-                    char[] emojis = {'✊', '✋', '✌'};
+                    char[] emojis = {' ','✊', '✋', '✌'};
 
 
                     do{
@@ -271,7 +276,8 @@ public class M03_UF1_PR01_MartinezPau {
                                 Thread.sleep(1000);
                             } else {
                                 selectionUser = llegir.nextInt();
-                                if (selectionUser < 1 || selectionUser > 3) {
+                                System.out.println(selectionUser);
+                                if (selectionUser < 0 || selectionUser > 2) {
                                     tipusCorrecte = false;
 
                                     llegir.nextLine();
@@ -281,7 +287,12 @@ public class M03_UF1_PR01_MartinezPau {
                             }
                         } while (!tipusCorrecte);
 
-                        selectionIA = (int) (Math.random() * 3);
+                        for (int i = 0; i < 3; i++) {
+                            selectionIA = (int) (Math.random() * 3);
+                            if (selectionIA == 0){
+                                selectionIA = 1;
+                            }
+                        }
 
                         String[] animPPT = {"Pedra !","Paper !!","Tisores !!!"};
 
@@ -291,7 +302,7 @@ public class M03_UF1_PR01_MartinezPau {
                             System.out.print("\r");
                         }
 
-                        System.out.println(emojis[(1 - selectionUser)] + " vs. " + emojis [(1 - selectionIA)]);
+                        System.out.println(emojis[(selectionUser)] + " vs. " + emojis [(selectionIA)]);
 
                         // 1 Pedra  2 Paper  3 Tisora   P vs M
                         if (selectionUser == selectionIA){
@@ -300,6 +311,7 @@ public class M03_UF1_PR01_MartinezPau {
                         } else if (selectionIA == selectionUser + 1 || (selectionIA == 1 && selectionUser == 3) ) { // Ex: Si User = 1 i IA = 2 El guanyador és el qui tingui el número adjacent més gran
                             // El User perd.
                             System.out.println("Has perdut...");
+                            puntuaccioIA +=1;
 
                         } else if (selectionUser == selectionIA + 1 || (selectionUser == 1 && selectionIA == 3) ) {
                             // El User guanya.
@@ -309,6 +321,7 @@ public class M03_UF1_PR01_MartinezPau {
                             }
 
                             System.out.println("\t Has guanyat!!");
+                            puntuaccioUsuari +=1;
                         }
 
 
@@ -355,6 +368,7 @@ public class M03_UF1_PR01_MartinezPau {
 
                     break;
                 }
+
                 // ===== DU-MB ===== //
                 case 3: {
                     // DU-MB ve de DA-LLI la IA que pinta i DUMB, enginyós, he?
@@ -477,29 +491,192 @@ public class M03_UF1_PR01_MartinezPau {
 
                     } while (tornarAJugar);
 
-                        break;
-                    }
+                    break;
+                }
 
                 // ===== El aogado ===== //
-                case 4:
+                case 4: {
 
-                    String paraules[][] = {{"Abraç", "Casa", "Esport", "Final", "Caure", "Contes", "Marit", "Pedra", "Vaca", "Llapis", "Teoria", "Mare", "Nebot", "Sang", "Infern", "Rodona", "Xiulet", "Llavor"}, // Hi ha les facils 4-6 lletres sense accents
+                    String[][] paraules = {{"Abraç", "Casa", "Esport", "Final", "Caure", "Contes", "Marit", "Pedra", "Vaca", "Llapis", "Teoria", "Mare", "Nebot", "Sang", "Infern", "Rodona", "Xiulet", "Llavor"}, // Hi ha les facils 4-6 lletres sense accents
                             {"Cambrera", "Empresari", "Jutgessa", "Perruqueria", "Quadrat", "Correu", "Internet", "Planejar", "Peixatera", "Folklore", "Costelles", "Acupuntura", "Lleialtat", "Superheroi", "Superheroi"}, // Hi ha les normals 16+ lletres amb accents
                             {"Monorefringència", "Drogodependència", "Espectroradiometria", "Microminiaturització", "Ferrihemoglobina", "Mineralitzadores", "Llatinoamericans", "Irreversiblement", "Invulnerabilitat"}}; // I les difícils...
 
-                    int dificultat = 0;
+                    char[] tureWord; // Un array per la paraula completa
+                    char[] printWord;  // Un array que el usuari que omplir
+                    char selectWords = 'S';
 
                     
+                    int dificultat = 0; // S'utilitza per escollir la filla de la matriu paraules
+                    int choseWord = 0; // Actua com index per escollir una paraula
+                    int vidas = 6; // Las vidas que te el usuari
+                    boolean conteLletra = false;
+
+                    do {
+                        tornarAJugar = false;
+                        System.out.print("\r");
+
+                        System.out.print(" Benvingut al Penjat: \n" +
+                                GREEN + "  ====   En quina dificultat vols jugar?   ====\n" + RESET +
+                                "  Introdueix " + YELLOW + "\"1\"" + RESET + " per mode facil\n" +
+                                "  Introdueix " + YELLOW + "\"2\"" + RESET + " per mode normal\n" +
+                                "  Introdueix " + YELLOW + "\"3\"" + RESET + " per mode ??????\n" +
+                                GREEN + "  =============================================\n" + RESET +
+                                "  Selecciona una opcio:\n");
+
+                        do { //Excloguem el menu perquè no es repeteixi cada vegada que fallem
+                            System.out.print("\r");
+                            tipusCorrecte = llegir.hasNextInt(); // For Int
 
 
-                        break;
+                            if (!tipusCorrecte) {
+                                llegir.nextLine();
+                                System.out.print(BR_RED + "ERROR: Input Incorrecta" + RESET);
+                                Thread.sleep(1000);
+                                System.out.print("\r");
+                            } else {
+                                opcio = llegir.nextInt();
+                                if (opcio < 1 || opcio > 3) {
+                                    tipusCorrecte = false;
 
+                                    llegir.nextLine();
+                                    System.out.print(BR_RED + "ERROR: Input Incorrecta" + RESET);
+                                    Thread.sleep(1000);
+                                    System.out.print("\r");
+                                }
+                            }
+                        } while (!tipusCorrecte);
+
+                        switch (opcio) {
+                            case 1 -> dificultat = 0;
+                            case 2 -> dificultat = 1;
+                            case 3 -> dificultat = 2;
+                        }
+
+                        choseWord = (int) (Math.random() * paraules[dificultat].length);
+                        tureWord = paraules[dificultat][choseWord].toUpperCase().toCharArray();
+                        printWord = new char[tureWord.length];
+
+                        for (int i = 0; i < printWord.length; i++) {
+                            if (tureWord[0] == tureWord[i]) { // Per donar una ajuda l'usuari passarem sempre la primera lletra
+                                printWord[i] = tureWord[i];
+                            } else {
+                                printWord[i] = '_';
+                            }
+                        }
+
+                        do {
+                            System.out.println(printWord);
+
+                            System.out.print("Vides restants: " + vidas + "\t");
+                            System.out.print("Selecciona una lletra: ");
+
+                            do { // excloguem el menu perquè no es repeteixi cada vegada que fallem
+                                tipusCorrecte = llegir.hasNext(); // Es per Sting ja que no hi ha una function per char
+
+                                if (!tipusCorrecte) {
+                                    llegir.nextLine();
+                                    System.out.print(BR_RED + "ERROR: Input Incorrecta" + RESET);
+                                    Thread.sleep(1000);
+                                    System.out.print("\r");
+                                } else {
+                                    selectWords = llegir.next().toUpperCase().charAt(0);
+                                }
+                            } while (!tipusCorrecte);
+
+                            System.out.println("Has seleccionat: " + selectWords);
+
+
+                            // Ja he seleccionat la lletra
+
+                            for (int i = 0; i < printWord.length; i++) { // Verifiquem la lletra
+                                if(tureWord[i] == selectWords){
+                                    conteLletra = true;
+                                    break;
+                                }else {
+                                    conteLletra = false;
+                                }
+                            }
+
+                            if (conteLletra){
+                                // Ey tens lletra, estic molt cansat
+                                System.out.println("Correcta!");
+                                for (int i = 0; i < printWord.length; i++) {
+                                    if(tureWord[i] == selectWords){
+                                        printWord[i] = selectWords;
+                                    }
+                                }
+                            }else {
+                                System.out.println("Incorrecta");
+                                vidas -= 1;
+                            }
+
+                            if(Arrays.equals(tureWord, printWord)){
+                                // Has guanyat!!
+                                System.out.println("Has guanyar!!!");
+                                puntuaccioUsuari += opcio;
+                                break;
+                            }
+
+                        } while (vidas != 0);
+
+                        if (vidas == 0){
+                            puntuaccioIA += 1;
+                        }
+
+
+                    System.out.println();
+
+                    System.out.print("""
+                                Que vols fer?:\s
+                                =====================================
+                                1. Tornar a jugar
+                                2. Tornar el menu principal
+                                3. Sortir del programa
+                                =====================================
+                                Selecciona una opció:\s""");
+
+                    do { // Verifiquem
+                        System.out.print("\r");
+                        tipusCorrecte = llegir.hasNext(); // For Int
+
+                        if (!tipusCorrecte) {
+                            llegir.nextLine();
+                            System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
+                            Thread.sleep(1000);
+                        } else {
+                            opcio = llegir.nextInt();
+                            if (opcio < 1 || opcio > 3) {
+                                tipusCorrecte = false;
+
+                                llegir.nextLine();
+                                System.out.print(BR_RED +"ERROR: Input Incorrecta" + RESET);
+                                Thread.sleep(1000);
+                            }
+                        }
+                    } while (!tipusCorrecte);
+
+                    switch (opcio) {
+                        case 1:
+                            tornarAJugar = true;
+                            System.out.println(" ");
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            endProgram = true;
+                            break;
+                    }
+
+            } while (tornarAJugar);
+
+            break;
+                }
+
+                // ===== El programa finalitza
                 case 5:
                         endProgram = true;
 
                         break;
-
-
                 }
 
 
