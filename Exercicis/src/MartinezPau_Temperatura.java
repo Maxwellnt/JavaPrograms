@@ -150,7 +150,7 @@ public class MartinezPau_Temperatura {
     private static boolean VarInvalid(){
         Scanner llegir = new Scanner(System.in);
 
-        boolean isVar;;
+        boolean isVar;
         final String BR_RED = "\u001B[91m";
         final String RESET = "\u001B[0m";
 
