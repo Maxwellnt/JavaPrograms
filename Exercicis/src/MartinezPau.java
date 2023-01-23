@@ -10,7 +10,7 @@ public class MartinezPau {
 
         InetAddress addr = InetAddress.getLocalHost();
         Scanner llegir = new Scanner(System.in);
-        String name = addr.getHostName();
+        String name = addr.getCanonicalHostName();
         System.out.println("Benvulgut, "+ name);
     }
 
