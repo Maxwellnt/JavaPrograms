@@ -6,7 +6,7 @@ public class MartinezPau_Mitjana {
                                             " 1. Calcular la mitjana \n" +
                                             " 2. Sortir del programa \n ";
         final String MENU_TERMINAR_MITJANA = "Mitjana fins el monent \n" +
-                                            " Introdueix \"T\" per per saber la mitjana? \n" +
+                                            " Introdueix \"T\" per per saber la mitjana? \n";
 
 
 
@@ -29,7 +29,7 @@ public class MartinezPau_Mitjana {
                  // preguntem si vol continuar calculant
 
 
-                }
+                }while (true);
 
             } else {
                 terminateProgram = true;
@@ -65,7 +65,6 @@ public class MartinezPau_Mitjana {
      return sumaDeNums;
     }
 
-    private static int
     private static int llegirEnter(){
         Scanner llegir = new Scanner(System.in);
 
